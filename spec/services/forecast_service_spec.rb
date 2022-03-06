@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ForecastService do
   describe 'class methods' do
     describe 'get_city_forecast(lat,long)' do
-      it 'can get a forecast from coordinates' do
+      it 'can get a forecast from coordinates', :vcr do
         city_state = 'denver,co'
         coordinates = CoordinateService.get_city_coordinates(city_state)
         lat_lng = coordinates[:locations][1][:latLng]

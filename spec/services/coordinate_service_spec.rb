@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe CoordinateService do
   describe 'class methods' do
     describe 'get_city_coordinates(city_state)' do
-      it 'can get a citys coordinates' do
+      it 'can get a citys coordinates', :vcr do
         city_state = 'denver,co'
         output = CoordinateService.get_city_coordinates(city_state)
 
