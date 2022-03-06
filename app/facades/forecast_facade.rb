@@ -1,0 +1,13 @@
+class ForecastFacade
+
+  def self.get_forecast_for(location)
+    coords = CoordinateService.get_city_coordinates(location)[:locations][1][:latLng]
+    data = ForecastService.get_forecast_for(coords)
+    Forecast.new(data)
+  end
+
+  def self.service
+    @_service ||= ForecastService.new
+  end
+
+end

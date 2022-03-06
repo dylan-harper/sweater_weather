@@ -10,7 +10,7 @@ RSpec.describe ForecastService do
         expect(lat_lng[:lat].to_s).to eq("39.738453")
         expect(lat_lng[:lng].to_s).to eq("-104.984853")
 
-        forecast = ForecastService.get_forecast(lat_lng)
+        forecast = ForecastService.get_forecast_for(lat_lng)
 
         expect(forecast).to be_a Hash
         expect(forecast[:lat].to_s).to eq("39.7385")
