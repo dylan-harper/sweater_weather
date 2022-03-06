@@ -4,7 +4,7 @@ RSpec.describe ForecastFacade do
   describe 'class methods' do
     describe '::get_forecast(coords)' do
 
-      it 'outputs a poro' do
+      it 'outputs a poro', :vcr do
         @location = 'denver,co'
         @forecast = ForecastFacade.get_forecast_for(@location)
 

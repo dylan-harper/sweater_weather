@@ -6,12 +6,12 @@ RSpec.describe Forecast do
     @forecast = ForecastFacade.get_forecast_for(@location)
   end
 
-  it 'exists' do
+  it 'exists', :vcr do
     expect(@forecast).to be_a Forecast
   end
 
   describe 'attributes' do
-    it 'has current_weather' do
+    it 'has current_weather', :vcr do
       current = @forecast.current_weather
       #include
       expect(current).to have_key(:dt)
@@ -33,7 +33,7 @@ RSpec.describe Forecast do
       expect(current).to_not have_key(:snow)
     end
 
-    it 'has daily_weather' do
+    it 'has daily_weather', :vcr do
       daily = @forecast.daily_weather
 
       daily.each do |day|
@@ -58,8 +58,8 @@ RSpec.describe Forecast do
         expect(day).to_not have_key(:uvi)
       end
     end
-    
-    it 'has hourly_weather' do
+
+    it 'has hourly_weather', :vcr do
       hourly = @forecast.hourly_weather
 
       hourly.each do |hour|
