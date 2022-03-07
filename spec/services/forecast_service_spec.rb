@@ -24,8 +24,8 @@ RSpec.describe ForecastService do
         expect(forecast[:current]).to have_key(:pressure)
         expect(forecast[:current]).to have_key(:humidity)
         expect(forecast).to have_key(:hourly)
-        expect(forecast).to have_key(:minutely)
         expect(forecast).to have_key(:daily)
+        expect(forecast).to_not have_key(:minutely)
       end
     end
   end

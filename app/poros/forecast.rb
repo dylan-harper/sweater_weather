@@ -8,9 +8,10 @@ class Forecast
     @hourly_weather = hourly_weather_filter(data[:hourly][0..7])
   end
 
+  #write unit test
   def current_weather_filter(data)
     output = {
-      dt: data[:dt],
+      dt: Date.jd(data[:dt]),
       sunrise: data[:sunrise],
       sunset: data[:sunset],
       temp: data[:temp],
@@ -23,12 +24,13 @@ class Forecast
     }
   end
 
+  #write unit test
   def daily_weather_filter(data)
     five_day_forecast = []
 
     data.each do |d|
       day = Hash.new
-      day[:dt] = d[:dt]
+      day[:dt] = Date.jd(d[:dt])
       day[:sunrise] = d[:sunrise]
       day[:sunset] = d[:sunset]
       day[:max_temp] = d[:temp][:max]
@@ -41,12 +43,13 @@ class Forecast
     five_day_forecast
   end
 
+  #write unit test
   def hourly_weather_filter(data)
     eight_hour_forecast = []
 
     data.each do |d|
       hour = Hash.new
-      hour[:dt] = d[:dt]
+      hour[:dt] = Date.jd(d[:dt])
       hour[:temp] = d[:temp]
       hour[:conditions] = d[:weather][0][:description]
       hour[:icon] = d[:weather][0][:icon]

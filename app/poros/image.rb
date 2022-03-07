@@ -8,6 +8,7 @@ class Image
     @credit = sources(data[0])
   end
 
+  #write unit test
   def sources(data)
     output = {
       source: 'unsplash.com',
