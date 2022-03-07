@@ -9,7 +9,7 @@ class BookService
 private
 
   def self.conn
-    Faraday.new(url:"https://api.openweathermap.org") do |faraday|
+    Faraday.new(url:"http://openlibrary.org") do |faraday|
       #params as needed
     end
   end
