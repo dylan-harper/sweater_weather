@@ -6,32 +6,33 @@ RSpec.describe BookSearch do
     @location = 'denver,co'
     @quantity = 5
     @forecast = ForecastFacade.get_forecast_for(@location)
-    @book_search = BookSearch.new(@location, @quantity, @forecast)
+    @book_results = BookFacade.search_books_about(@location)
+    @books = BookSearch.new(@location, @quantity, @book_results, @forecast)
   end
 
-  it 'exists' do
-    expect(@book_search).to be_a BookSearch
+  it 'exists', :vcr do
+    expect(@books).to be_a BookSearch
   end
 
   describe 'attributes' do
-    it 'has destination' do
-      expect(@book_search.destination).to eq(@location)
+    it 'has destination', :vcr do
+      expect(@books.destination).to eq(@location)
     end
 
-    it 'has a forecast' do
-      expect(@book_search.forecast).to have_key(:summary)
-      expect(@book_search.forecast).to have_key(:temperature)
+    it 'has a forecast', :vcr do
+      expect(@books.forecast).to have_key(:summary)
+      expect(@books.forecast).to have_key(:temperature)
     end
 
-    it 'has the total books found' do
-      expect(@book_search.total_books_found).to be_an Integer
+    it 'has the total books found', :vcr do
+      expect(@books.total_books_found).to be_an Integer
     end
 
-    it 'has an array of books matching the quantity provided' do
-      expect(@book_search.books).to be_an Array
-      expect(@book_search.books.length).to eq(@quantity)
+    it 'has an array of books matching the quantity provided', :vcr do
+      expect(@books.books).to be_an Array
+      expect(@books.books.length).to eq(@quantity)
 
-      @book_search.books.each do |book|
+      @books.books.each do |book|
         expect(book).to have_key(:isbn)
         expect(book).to have_key(:title)
         expect(book).to have_key(:publisher)

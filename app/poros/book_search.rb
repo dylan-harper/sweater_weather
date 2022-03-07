@@ -1,5 +1,7 @@
 class BookSearch
 
+  attr_reader :destination, :forecast, :total_books_found, :books
+
   def initialize(location, quantity, book_results, forecast)
     @destination = location
     @forecast = filter_forecast(location, forecast)

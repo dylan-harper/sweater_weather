@@ -19,7 +19,7 @@ RSpec.describe BookFacade do
       end
     end
 
-    describe '::get_results_for(location)' do
+    describe '::get_results_for(location)', :vcr do
       it 'can combine book search and forecast data into poro' do
         location = 'denver,co'
         quantity = 5
@@ -27,16 +27,12 @@ RSpec.describe BookFacade do
         output = BookFacade.get_results_for(location, quantity)
 
         expect(output).to be_a BookSearch
+        expect(output.destination).to eq(location)
+        expect(output.books.length).to eq(quantity)
+        expect(output.forecast).to be_a Hash
+        expect(output.total_books_found).to be_an Integer
       end
     end
 
-    # describe '::get_forecast_for(location)' do
-    #   it 'can retrieve a forecast from the location query' do
-    #     location = 'denver,co'
-    #
-    #     forecast = BookFacade.get_forecast_for(location)
-    #     expect(forecast).to be_a Forecast
-    #   end
-    # end
   end
 end
