@@ -40,10 +40,24 @@ RSpec.describe BookSearch do
     end
   end
 
-  # describe 'instance methods' do
-  #   it '#filter_forecast(location,forecast)' do
-  #
-  #   end
-  # end
+  describe 'instance methods' do
+    it '#filter_forecast(location,forecast)', :vcr do
+      result = @books.filter_forecast(@location, @forecast)
+
+      expect(result).to have_key(:summary)
+      expect(result).to have_key(:temperature)
+    end
+
+    it '#filter_books(quantity, books)', :vcr do
+      results = @books.filter_books(@quantity, @book_results[:docs])
+
+      expect(results.length).to eq(@quantity)
+      results.each do |b|
+        expect(b).to have_key(:isbn)
+        expect(b).to have_key(:title)
+        expect(b).to have_key(:publisher)
+      end
+    end
+  end
 
 end
