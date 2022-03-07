@@ -4,6 +4,8 @@ class ImageService
     get_data("/search/photos?query=#{city}")[:results]
   end
 
+private
+
   def self.conn
     Faraday.new(url:"https://api.unsplash.com") do |faraday|
      faraday.params[:client_id] = ENV['IMAGE_KEY']
