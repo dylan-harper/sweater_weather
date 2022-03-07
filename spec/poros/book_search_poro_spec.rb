@@ -13,4 +13,24 @@ RSpec.describe BookSearch do
     expect(@book_search).to be_a BookSearch
   end
 
+  describe 'attributes' do
+    it 'has destination' do
+      expect(@book_search.destination).to eq(@location)
+    end
+
+    it 'has a forecast' do
+      expect(@book_search.forecast).to have_key(:summary)
+      expect(@book_search.forecast).to have_key(:temperature)
+    end
+
+    it 'has the total books found' do
+      expect(@book_search.total_books_found).to be_an Integer
+    end
+
+    it 'has an array of books matching the quantity provided' do
+      expect(@book_search.books).to be_an Array
+      expect(@book_search.books.length).to eq(@quantity)
+    end
+  end
+
 end
