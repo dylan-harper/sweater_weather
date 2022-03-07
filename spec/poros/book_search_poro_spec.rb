@@ -30,6 +30,12 @@ RSpec.describe BookSearch do
     it 'has an array of books matching the quantity provided' do
       expect(@book_search.books).to be_an Array
       expect(@book_search.books.length).to eq(@quantity)
+
+      @book_search.books.each do |book|
+        expect(book).to have_key(:isbn)
+        expect(book).to have_key(:title)
+        expect(book).to have_key(:publisher)
+      end
     end
   end
 
