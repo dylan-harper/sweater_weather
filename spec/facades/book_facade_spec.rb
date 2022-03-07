@@ -19,10 +19,24 @@ RSpec.describe BookFacade do
       end
     end
 
-    describe '::get_forecast_for(location)' do
-      it 'can retrieve a forecast from the location query' do
+    describe '::get_results_for(location)' do
+      it 'can combine book search and forecast data into poro' do
+        location = 'denver,co'
+        quantity = 5
 
+        output = BookFacade.get_results_for(location, quantity)
+
+        expect(output).to be_a BookSearch
       end
     end
+
+    # describe '::get_forecast_for(location)' do
+    #   it 'can retrieve a forecast from the location query' do
+    #     location = 'denver,co'
+    #
+    #     forecast = BookFacade.get_forecast_for(location)
+    #     expect(forecast).to be_a Forecast
+    #   end
+    # end
   end
 end

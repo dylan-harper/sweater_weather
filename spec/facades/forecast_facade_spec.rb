@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ForecastFacade do
   describe 'class methods' do
-    describe '::get_forecast(coords)' do
+    describe '::get_forecast_for(location)' do
 
       it 'outputs a poro', :vcr do
         @location = 'denver,co'
