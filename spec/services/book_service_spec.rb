@@ -6,7 +6,7 @@ RSpec.describe BookService do
       it 'can search books given parameters' do
         location = 'denver,co'
         quantity = 10
-        results = BookService.search(location, quantity)
+        results = BookService.search(location)
 
         expect(results).to be_a Hash
       end
