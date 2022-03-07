@@ -3,7 +3,6 @@ class Forecast
   attr_reader :id, :current_weather, :daily_weather, :hourly_weather
 
   def initialize(data)
-    #write test for id attribute
     @id = nil
     @current_weather = current_weather_filter(data[:current])
     @daily_weather = daily_weather_filter(data[:daily][0..4])

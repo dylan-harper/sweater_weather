@@ -8,6 +8,7 @@ RSpec.describe Forecast do
 
   it 'exists', :vcr do
     expect(@forecast).to be_a Forecast
+    expect(@forecast.id).to eq(nil)
   end
 
   describe 'attributes' do

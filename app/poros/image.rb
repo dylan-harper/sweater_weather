@@ -1,8 +1,9 @@
 class Image
 
-  attr_reader :location, :image_url, :credit
+  attr_reader :id, :location, :image_url, :credit
 
   def initialize(data, location)
+    @id = nil
     @location = location
     @image_url = data[0][:urls][:full]
     @credit = sources(data[0])
