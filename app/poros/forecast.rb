@@ -1,8 +1,10 @@
 class Forecast
 
-  attr_reader :current_weather, :daily_weather, :hourly_weather
+  attr_reader :id, :current_weather, :daily_weather, :hourly_weather
 
   def initialize(data)
+    #write test for id attribute
+    @id = nil
     @current_weather = current_weather_filter(data[:current])
     @daily_weather = daily_weather_filter(data[:daily][0..4])
     @hourly_weather = hourly_weather_filter(data[:hourly][0..7])
@@ -11,9 +13,9 @@ class Forecast
   #write unit test
   def current_weather_filter(data)
     output = {
-      dt: Date.jd(data[:dt]),
-      sunrise: data[:sunrise],
-      sunset: data[:sunset],
+      dt: Time.at(data[:dt]),
+      sunrise: Time.at(data[:sunrise]),
+      sunset: Time.at(data[:sunset]),
       temp: data[:temp],
       feels_like: data[:feels_like],
       humidity: data[:humidity],
@@ -30,9 +32,9 @@ class Forecast
 
     data.each do |d|
       day = Hash.new
-      day[:dt] = Date.jd(d[:dt])
-      day[:sunrise] = d[:sunrise]
-      day[:sunset] = d[:sunset]
+      day[:dt] = Time.at(d[:dt])
+      day[:sunrise] = Time.at(d[:sunrise])
+      day[:sunset] = Time.at(d[:sunset])
       day[:max_temp] = d[:temp][:max]
       day[:min_temp] = d[:temp][:min]
       day[:conditions] = d[:weather][0][:description]
@@ -49,7 +51,7 @@ class Forecast
 
     data.each do |d|
       hour = Hash.new
-      hour[:dt] = Date.jd(d[:dt])
+      hour[:dt] = Time.at(d[:dt])
       hour[:temp] = d[:temp]
       hour[:conditions] = d[:weather][0][:description]
       hour[:icon] = d[:weather][0][:icon]
