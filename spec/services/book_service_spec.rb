@@ -1,0 +1,14 @@
+require 'rails_helper'
+
+RSpec.describe BookService do
+  describe 'class methods' do
+    describe '::search(query)' do
+      it 'can search books given parameters' do
+        location = 'denver,co'
+        results = BookService.search(location)
+
+        expect(results).to be_a Hash
+      end
+    end
+  end
+end
