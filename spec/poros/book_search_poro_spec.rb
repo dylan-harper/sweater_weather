@@ -40,4 +40,10 @@ RSpec.describe BookSearch do
     end
   end
 
+  # describe 'instance methods' do
+  #   it '#filter_forecast(location,forecast)' do
+  #
+  #   end
+  # end
+
 end

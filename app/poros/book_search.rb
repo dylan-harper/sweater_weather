@@ -1,8 +1,9 @@
 class BookSearch
 
-  attr_reader :destination, :forecast, :total_books_found, :books
+  attr_reader :id, :destination, :forecast, :total_books_found, :books
 
   def initialize(location, quantity, book_results, forecast)
+    @id = nil
     @destination = location
     @forecast = filter_forecast(location, forecast)
     @total_books_found = book_results[:numFound]
@@ -17,7 +18,7 @@ class BookSearch
   end
   #write unit test
   def filter_books(quantity, books)
-    selected = books.take(quantity)
+    selected = books.take(quantity.to_i)
     output = []
 
     selected.each do |book|
