@@ -2,7 +2,6 @@ class BookService
 
   def self.search(location)
     loc = location.split(',')
-    require "pry"; binding.pry
     get_data("/search.json?q=#{loc[0]}+#{loc[1]}")
   end
 
@@ -18,7 +17,6 @@ private
     response = conn.get(url) do |faraday|
       #params as needed
     end
-    require "pry"; binding.pry
     JSON.parse(response.body, symbolize_names: true)
   end
 
