@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  #test validations
+  validates_presence_of :email
   validates_uniqueness_of :email
+  has_secure_token :api_key
   has_secure_password
 end

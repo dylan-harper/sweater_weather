@@ -13,4 +13,5 @@ RSpec.describe 'Image Request' do
     expect(image[:attributes]).to have_key(:credit)
     expect(image[:attributes][:credit]).to be_a Hash
   end
+
 end
