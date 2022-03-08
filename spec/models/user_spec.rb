@@ -8,12 +8,13 @@ RSpec.describe User do
     it { should validate_uniqueness_of(:email) }
     it { should have_secure_password }
 
+    it 'exists' do
+      expect(user).to be_a User
+    end
+
     it 'does not store user password or confirmation' do
       expect(user).to_not have_attribute(:password)
       expect(user.password_digest).to_not eq('test123')
     end
   end
-
-
-
 end
