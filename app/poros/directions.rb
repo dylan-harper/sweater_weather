@@ -20,10 +20,11 @@ class Directions
 
   def find_weather(directions, forecast_at_dest)
     array = split_time_string(directions)
-    if array[0].to_i < 8
-      return hourly_forecast(array[0].to_i, forecast_at_dest)
-    elsif array[0].to_i > 48
+
+    if array[0].to_i > 48
       return nil
+    else
+      hourly_forecast(array[0].to_i, forecast_at_dest)
     end
   end
 

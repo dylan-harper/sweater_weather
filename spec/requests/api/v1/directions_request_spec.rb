@@ -17,13 +17,14 @@ RSpec.describe 'Directions Request' do
  it 'can retrive directions and weather' do
    payload = {
     "origin": "Denver,CO",
-    "destination": "Pueblo,CO",
+    "destination": "Austin,TX",
     "api_key": @api_key
    }
    post '/api/v1/road_trip', headers: @headers, params: payload.to_json
    expect(response).to be_successful
 
    roadtrip = JSON.parse(response.body, symbolize_names: true)[:data]
+
    expect(roadtrip[:type]).to eq('roadtrip')
    expect(roadtrip[:attributes][:start_city]).to eq(payload[:origin])
    expect(roadtrip[:attributes][:end_city]).to eq(payload[:destination])
