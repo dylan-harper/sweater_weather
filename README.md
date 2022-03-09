@@ -5,9 +5,9 @@ This is a final project for Module 3 Back End program in the Turing School of So
 ## Learning goals:
 
 ### Expose an API that aggregates data from multiple external APIs:
-  *  Weather: https://openweathermap.org/api/one-call-api  
-  *  Directions: https://developer.mapquest.com/documentation/geocoding-api/
-  *  Images: https://unsplash.com/developers
+   *  Weather: https://openweathermap.org/api/one-call-api  
+   *  Directions: https://developer.mapquest.com/documentation/geocoding-api/
+   *  Images: https://unsplash.com/developers
 * Expose an API that requires an authentication token
 * Expose an API for CRUD functionality
 * Determine completion criteria based on the needs of other developers
