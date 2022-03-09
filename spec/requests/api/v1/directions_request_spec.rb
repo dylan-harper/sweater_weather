@@ -14,10 +14,10 @@ RSpec.describe 'Directions Request' do
     @api_key = @user[:attributes][:api_key]
   end
 
- it 'can retrive directions and weather' do
+ it 'can retrive directions and weather', :vcr do
    payload = {
     "origin": "Denver,CO",
-    "destination": "Austin,TX",
+    "destination": "Pueblo,CO",
     "api_key": @api_key
    }
    post '/api/v1/road_trip', headers: @headers, params: payload.to_json
@@ -31,6 +31,38 @@ RSpec.describe 'Directions Request' do
    expect(roadtrip[:attributes][:travel_time]).to be_a String
    expect(roadtrip[:attributes][:weather_at_eta]).to have_key(:temperature)
    expect(roadtrip[:attributes][:weather_at_eta]).to have_key(:conditions)
+ end
+
+ describe 'sad path testing' do
+   it 'returns an error for a bad api key', :vcr do
+     payload = {
+      "origin": "Denver,CO",
+      "destination": "Pueblo,CO",
+      "api_key": 'xyz'
+     }
+     post '/api/v1/road_trip', headers: @headers, params: payload.to_json
+     expect(response).to_not be_successful
+     expect(response.status).to eq(401)
+
+     output = JSON.parse(response.body, symbolize_names: true)
+     expect(output[:error]).to eq('Invalid key')
+     expect(output[:status]).to eq('401 Unauthorized')
+   end
+
+   it 'returns an error for a bad request', :vcr do
+     payload = {
+      "origin": "Denver,CO",
+      "destination": "London,UK",
+      "api_key": @api_key
+     }
+     post '/api/v1/road_trip', headers: @headers, params: payload.to_json
+     expect(response).to_not be_successful
+     expect(response.status).to eq(400)
+
+     output = JSON.parse(response.body, symbolize_names: true)
+     expect(output[:error]).to eq('impossible')
+     expect(output[:status]).to eq('400')
+   end
  end
 
 end

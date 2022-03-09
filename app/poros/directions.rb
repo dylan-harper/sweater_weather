@@ -13,7 +13,7 @@ class Directions
   def format_time(directions)
     array = split_time_string(directions)
     if array[0].to_i > 48
-      return 'impossible'
+      return 'too long'
     end
     travel_time = "#{array[0]} hour(s), #{array[1]} minutes, #{array[0]} seconds"
   end
@@ -45,6 +45,7 @@ class Directions
         return {
           temperature: forecast[:temp],
           conditions: forecast[:weather][0][:description]
+          # approximate_eta: Time.at(forecast[:dt])
         }
       end
     end

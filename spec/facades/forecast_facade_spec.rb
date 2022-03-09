@@ -11,9 +11,5 @@ RSpec.describe ForecastFacade do
         expect(@forecast).to be_a(Forecast)
       end
     end
-
-    xit '::service' do
-      expect(ForecastFacade.service).to be_a ForecastService
-    end
   end
 end
