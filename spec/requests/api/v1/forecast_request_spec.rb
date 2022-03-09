@@ -14,5 +14,4 @@ RSpec.describe 'Forecast Request', type: :request do
     expect(forecast[:attributes][:daily_weather].length).to eq(5)
     expect(forecast[:attributes][:hourly_weather].length).to eq(8)
   end
-
 end
