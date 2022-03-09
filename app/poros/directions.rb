@@ -12,20 +12,12 @@ class Directions
 
   def format_time(directions)
     array = split_time_string(directions)
-    if array[0].to_i > 48
-      return 'too long'
-    end
     travel_time = "#{array[0]} hour(s), #{array[1]} minutes, #{array[0]} seconds"
   end
 
   def find_weather(directions, forecast_at_dest)
     array = split_time_string(directions)
-
-    if array[0].to_i > 48
-      return nil
-    else
-      hourly_forecast(array[0].to_i, forecast_at_dest)
-    end
+    hourly_forecast(array[0].to_i, forecast_at_dest)
   end
 
   def split_time_string(directions)
@@ -36,7 +28,7 @@ class Directions
     if hours_ahead == 0
       return {
         temperature: forecast_at_dest[:current][:temp],
-        conditions: forecast_at_dest[:current][:conditions][0][:description]
+        conditions: forecast_at_dest[:current][:weather][0][:description]
        }
     end
 
