@@ -6,8 +6,4 @@ class ForecastFacade
     Forecast.new(data)
   end
 
-  def self.service
-    @_service ||= ForecastService.new
-  end
-
 end
