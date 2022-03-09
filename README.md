@@ -33,7 +33,7 @@ This is a final project for Module 3 Back End program in the Turing School of So
   * After cloning down this repository locally and running `bundle`,  you will need to run `bundle exec figaro install` and add the private keys from the above external APIs to your application.yml file as environment variables. 
 
 * Database creation
-  * `rails db:{create,migrate` on the CL
+  * `rails db:{create,migrate}` on the CL
 
 * How to run the test suite
   * `bundle exec rspec` on the CL
