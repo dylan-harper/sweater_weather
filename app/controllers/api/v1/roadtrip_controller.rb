@@ -13,5 +13,4 @@ class Api::V1::RoadtripController < ApplicationController
       end
     end
   end
-
 end
