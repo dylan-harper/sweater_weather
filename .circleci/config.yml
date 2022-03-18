@@ -32,6 +32,7 @@ jobs:
       PGUSER: sweater_weather
       PGPASSWORD: ''
       RAILSENV: test
+      
     parallelism: 3
     steps:
       - checkout
