@@ -2,7 +2,7 @@ class DirectionsFacade
 
   def self.get_directions_between(origin, destination)
     directions = service(origin, destination)
-    
+
     return nil if directions[:info][:statuscode] == 402
 
     dest_lat_long = get_coords(destination)
@@ -11,6 +11,8 @@ class DirectionsFacade
 
     Directions.new(origin, destination, directions, weather_at_dest)
   end
+
+private
 
   def self.get_coords(destination)
     CoordinateService.get_city_coordinates(destination)[:locations][0][:latLng]
