@@ -40,3 +40,5 @@ This is a final project for Module 3 Back End program in the Turing School of So
 
 * Postman instructions
   * To test these endpoints in an external application, run `rails s` on CL and then open or download Postman. Send requests to `http://localhost:3000/api/v1/ + endpoint` and enter parameters through the body of the request in JSON format. 
+  * ![Screen Shot 2022-05-17 at 9 34 25 AM](https://user-images.githubusercontent.com/39470230/168862904-5b94745c-0814-4e89-92b1-4913d637c512.png)
+
